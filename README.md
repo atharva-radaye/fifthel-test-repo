@@ -1,55 +1,93 @@
-# Code Review Demo Repository
 
-This repository contains a small Python project suitable for **code review demos**. The structure is simple and easy to understand so reviewers can focus on process and feedback style.
+# Code review demo – attendee instructions
 
-## What’s in this repo
+Fork this repo, check out the **`first-branch`** branch, and open a PR **into your fork’s `main`** so we can practice code review.
 
-- **`greeter_cli/`** – A minimal CLI that greets a user by name in different languages (English, Spanish, French). Good for reviewing modules, config, and a single entry point.
-- **`hello_world.py`** – A standalone “Hello, World!” script (optional placeholder).
-- **`run_greeter.py`** – Script to run the Greeter CLI from the repo root.
+---
 
-## Quick start
+## 1. Fork the repository
 
-1. **Clone and enter the repo** (if needed):
-   ```bash
-   cd /path/to/fifthel-test-repo
-   ```
+- Go to the repo on GitHub (or your Git host).
+- Click **Fork** and create the fork under your account.
 
-2. **Run the Greeter CLI** (no install required; use the repo root as working directory):
-   ```bash
-   python run_greeter.py Alice
-   python run_greeter.py Bob --lang es
-   python run_greeter.py Carol -l fr
-   ```
-   Use `python3` instead of `python` if that’s what your system provides.
+---
 
-3. **Optional:** Use a virtual environment:
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate   # or: .venv\Scripts\activate on Windows
-   # requirements.txt has no external deps; venv is for isolation
-   ```
+## 2. Clone your fork and go into the repo
 
-## Project structure
-
-```
-.
-├── README.md                 # This file
-├── requirements.txt         # Dependencies (none for this demo)
-├── run_greeter.py           # Run the CLI from repo root
-├── hello_world.py           # Simple placeholder script
-└── greeter_cli/             # Main demo package
-    ├── README.md            # Package-level docs
-    ├── __init__.py
-    ├── config.py            # Languages and greeting templates
-    ├── greeter.py           # greet(name, lang) logic
-    └── main.py              # argparse and CLI entry point
+```bash
+git clone https://github.com/YOUR_USERNAME/fifthel-test-repo.git
+cd fifthel-test-repo
 ```
 
-## Using this for code review
+Replace `YOUR_USERNAME` with your GitHub username (or use the SSH URL if you prefer).
 
-- **Scope:** One small app (`greeter_cli`) with config, logic, and CLI clearly separated.
-- **READMEs:** Root and package READMEs describe purpose, layout, and how to run.
-- **Simplicity:** No database or external APIs; easy to read and comment on in a short session.
+---
 
-You can walk through `config.py` → `greeter.py` → `main.py` and use this repo to practice review comments, style feedback, and small refactors.
+## 3. Check out the remote branch `first-branch`
+
+**Option A – branch already exists on your fork (e.g. after a full fork):**
+
+```bash
+git fetch origin
+git checkout first-branch
+```
+
+**Option B – branch exists only on the original repo (add upstream and fetch):**
+
+```bash
+git remote add upstream https://github.com/aishwaryaraimule21/fifthel-test-repo.git
+git fetch upstream
+git checkout -b first-branch upstream/first-branch
+```
+
+Replace `ORIGINAL_OWNER` with the owner of the repo you forked from.
+
+---
+
+## 4. Push `first-branch` to your fork (if needed)
+
+If you used Option B, or your fork doesn’t have `first-branch` yet:
+
+```bash
+git push -u origin first-branch
+```
+
+If you used Option A and the branch already exists on your fork, ensure it’s up to date:
+
+```bash
+git push -u origin first-branch
+```
+
+---
+
+## 5. Open a PR on your fork (first-branch → main)
+
+- Go to **your fork** on GitHub (e.g. `https://github.com/YOUR_USERNAME/fifthel-test-repo`).
+- Use **Pull requests** → **New pull request**.
+- Set:
+  - **base:** `main` (your fork’s `main`)
+  - **compare:** `first-branch`
+- Add a short title and description (e.g. “Code review demo – first-branch into main”).
+- Create the pull request.
+
+We’ll use this PR for the code review demo.
+
+---
+
+## Quick reference – commands in order
+
+```bash
+git clone https://github.com/YOUR_USERNAME/fifthel-test-repo.git
+cd fifthel-test-repo
+git fetch origin
+# If first-branch isn’t on your fork, use upstream instead:
+git remote add upstream https://github.com/ORIGINAL_OWNER/fifthel-test-repo.git
+git fetch upstream
+git checkout -b first-branch upstream/first-branch
+git push -u origin first-branch
+# Then open a PR on your fork: base = main, compare = first-branch
+```
+
+---
+
+**Need help?** Ask the facilitator before or during the session.
